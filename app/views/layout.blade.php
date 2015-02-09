@@ -5,7 +5,7 @@
         <link
             type="text/css"
             rel="stylesheet"
-            href="/css/layout.css" 
+            href="css/layout.css" 
         />
         <title>Tutorial</title>
      </head>
