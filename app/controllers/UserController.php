@@ -1,28 +1,54 @@
 <?php
 
+use Illuminate\Support\MessageBag;
+
 class UserController
 extends Controller
 {
     public function loginAction()
     {
-        echo Input::server("REQUEST_METHOD");
+        $errors = new MessageBag();
+
+        if ($old = Input::old("errors"))
+        {
+            $errors = $old;
+        }
+
+        $data = [
+            "errors" => $errors
+        ];
+
         if (Input::server("REQUEST_METHOD") == "POST")
         {
             $validator = Validator::make(Input::all(), [
                 "username" => "required",
                 "password" => "required"
             ]);
-            
+
             if ($validator->passes())
             {
-                echo "Validation passed!";
-            }
-            else
-            {
-                echo "Validation failed!";
-            }
-        }
+                $credentials = [
+                    "username" => Input::get("username"),
+                    "password" => Input::get("password")
+                ];
 
-        return View::make("user/login");
+                if (Auth::attempt($credentials))
+                {
+                    return Redirect::route("user/profile");
+                }
+            }
+            
+            $data["errors"] = new MessageBag([
+                    "password" => [
+                    "Username and/or password invalid."
+                ]
+            ]);
+
+            $data["username"] = Input::get("username");
+
+            return Redirect::route("user/login")
+                ->withInput($data);
+        }
+        return View::make("user/login", $data);
     }
 }
