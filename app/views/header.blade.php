@@ -16,11 +16,7 @@
                 </a>
                     |
                 <a href="{{ URL::route("user/request") }}">
-                    request
-                </a>
-                    |
-                <a href="{{ URL::route("user/reset") }}">
-                    reset
+                    ¿Has olvidado tu contraseña?
                 </a>
             @endif
         </div>

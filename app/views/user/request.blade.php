@@ -1,11 +1,12 @@
 @extends("layout")
 @section("content")
     <form action="{{ action('RemindersController@postRemind') }}" method="POST">
-        <input type="email" name="email">
-        <input type="submit" value="Send Reminder">
+        {{ Form::label('email','E-mail') }}
+        <input type="email" name="email" placeholder="ejemplo@asdf.com" required>
+        <input type="submit" value="Enviar">
     </form>
 @stop
 @section("footer")
 @parent
-    <script src="//polyfill.io"></script>
+    
 @stop
