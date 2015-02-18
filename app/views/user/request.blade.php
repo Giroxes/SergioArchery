@@ -7,6 +7,6 @@
     </form>
 @stop
 @section("footer")
-@parent
+    @parent
     
 @stop
