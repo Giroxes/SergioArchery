@@ -10,7 +10,6 @@ class RemindersController extends Controller {
 	public function getRemind()
 	{
             return View::make("user/request");
-
 	}
 
 	/**

@@ -7,23 +7,23 @@ Route::group(["before" => "guest"], function()
         "uses" => "UserController@loginAction"
     ]);
 
-    Route::any("/request", [
+    Route::get("/request", [
         "as" => "user/request",
         "uses" => "RemindersController@getRemind"
     ]);
     
-    Route::any("/request2", [
-        "as" => "user/request2",
+    Route::post("/request", [
+        "as" => "user/request",
         "uses" => "RemindersController@postRemind"
     ]);
 
-    Route::any("/reset", [
+    Route::get("/reset", [
         "as" => "user/reset",
         "uses" => "RemindersController@getReset"
     ]);
     
-    Route::any("/reset2", [
-        "as" => "user/reset2",
+    Route::post("/reset", [
+        "as" => "user/reset",
         "uses" => "RemindersController@postReset"
     ]);
 });
