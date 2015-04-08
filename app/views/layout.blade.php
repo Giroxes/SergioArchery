@@ -5,11 +5,12 @@
         <link
             type="text/css"
             rel="stylesheet"
-            href="css/layout.css" 
+            href="/css/layout.css" 
         />
+        {{ HTML::style('css/layout.css'); }}
         <title>Tutorial</title>
-     </head>
-     <body>
+    </head>
+    <body>
         @include("header")
         <div class="content">
             <div class="container">
@@ -17,5 +18,5 @@
             </div>
         </div>
         @include("footer")
-     </body>
- </html>
+    </body>
+</html>

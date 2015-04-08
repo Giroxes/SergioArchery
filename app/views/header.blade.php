@@ -3,21 +3,13 @@
         <div class="container">
             <h1>Tutorial</h1>
             @if (Auth::check())
-                <a href="{{ URL::route("user/logout") }}">
-                    logout
-                </a>
+                {{ HTML::link('user/logout', 'Logout') }}
                     |
-                <a href="{{ URL::route("user/profile") }}">
-                    profile
-                </a>
+                {{ HTML::link('user/profile', 'Profile') }}
             @else
-                <a href="{{ URL::route("user/login") }}">
-                login
-                </a>
+                {{ HTML::link('user/login', 'Login') }}
                     |
-                <a href="{{ URL::route("user/request") }}">
-                    ¿Has olvidado tu contraseña?
-                </a>
+                {{ HTML::link('user/remind', 'Request password') }}
             @endif
         </div>
     </div>
