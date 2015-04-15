@@ -1,9 +1,13 @@
-@extends("layout")
-@section("content")
-    @if(Session::has('error'))
-        {{ Session::pull('error') }}
-    @endif
-    {{ Form::open(array('url'=>'user/reset', 'method'=>'POST')) }}
+@extends('layout')
+@section('content')
+    {{ Form::open(array(
+        'url' => 'account/register',
+        'autocomplete' => 'off',
+        'method' => 'POST'
+    )) }}
+        {{ Form::label('username', 'Username') }}
+        {{ Form::text('username') }}
+
         {{ Form::label('email', 'E-mail') }}
         {{ Form::text('email') }}
 
@@ -12,7 +16,8 @@
 
         {{ Form::label('password_confirmation', 'Password Confirmation') }}
         {{ Form::password('password_confirmation') }}
-        <input type="hidden" name="token" value="{{ $token }}">
-        <input type="submit" value="Reset Password">
+
+        {{ Form::submit("Send") }}
     {{ Form::close() }}
 @stop
+

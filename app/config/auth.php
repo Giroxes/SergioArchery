@@ -60,7 +60,7 @@ return array(
 
 	'reminder' => array(
 
-		'email' => 'email.request',
+		'email' => 'email.remind',
 
 		'table' => 'token',
 

@@ -11,7 +11,7 @@
     ]) }}
     {{ Form::label("password", "Password") }}
     {{ Form::password("password", [
-        "placeholder" => "••••••••••"
+        "placeholder" => "******"
     ]) }}
     @if ($error = $errors->first("password"))
         <div class="error">
@@ -20,8 +20,4 @@
     @endif
     {{ Form::submit("login") }}
     {{ Form::close() }}
-@stop
-@section("footer")
-    @parent
-    <script src="//polyfill.io"></script>
 @stop

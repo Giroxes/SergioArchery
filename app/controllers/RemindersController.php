@@ -20,16 +20,16 @@ class RemindersController extends Controller {
     public function postRemind()
     {
         $response = Password::remind(array('email' => Input::get('email')), function($message) {
-            $message->subject('Click on the link below to reset your password.');
+            $message->subject('Password reset');
         });
 
         switch ($response)
         {
             case Password::INVALID_USER:
-                return Redirect::back()->with('error', Lang::get($response));
+                return Redirect::back()->with('error', 'Usuario inválido');
 
             case Password::REMINDER_SENT:
-                return Redirect::back()->with('status', Lang::get($response));
+                return Redirect::to('info')->with('message', 'Se ha enviado un bla bla bla');
         }
     }
 
@@ -41,13 +41,8 @@ class RemindersController extends Controller {
      */
     public function getReset($token = null)
     {
-        if (is_null(Input::get('token'))) {
-            echo Input::server("REQUEST_METHOD");
-            var_dump($token);
-            var_dump(Input::all());
-            ?><script>alert('asddd')</script><?php 
+        if (is_null(Input::get('token'))) {            
             App::abort(404);
-
         }
 
         return View::make('user/reset')->with('token', Input::get('token'));

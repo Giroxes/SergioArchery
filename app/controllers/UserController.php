@@ -7,7 +7,13 @@ extends Controller
 {
     public function getLogin() 
     {
-        return View::make("user/login");
+        if (Auth::check())
+        {
+            return Redirect::to('home');
+        } else 
+        {
+            return View::make("user/login");
+        }
     }
     
     public function postLogin()
@@ -55,24 +61,37 @@ extends Controller
             
     public function getProfile()
     {
-        return View::make("user/profile");
+        if (Auth::check())
+        {
+            return View::make("user/profile");
+        } else 
+        {
+            return Redirect::to('home');
+        }
     }
 
     public function getLogout()
     {
         Auth::logout();
-        return View::make("home");
+        return Redirect::to("home");
     }
     
     public function getRemind()
     {
-        return View::make("user/request");
+        if (Auth::check())
+        {
+            return Redirect::to('home');
+        }
+        else 
+        {
+            return View::make("user/request");
+        }
     }
 
     public function postRemind()
     {
         $response = Password::remind(array('email' => Input::get('email')), function($message) {
-            $message->subject('Click on the link below to reset your password.');
+            $message->subject('Password reset.');
         });
 
         switch ($response)
@@ -81,21 +100,15 @@ extends Controller
                 return Redirect::back()->with('error', Lang::get($response));
 
             case Password::REMINDER_SENT:
-                return Redirect::back()->with('status', Lang::get($response));
+                return Redirect::to('info')->with('message', 'Se le ha enviado un correo con las instrucciones para cambiar su contraseña.');
         }
     }
 
     public function getReset($token = null)
     {
         if (is_null(Input::get('token'))) {
-            echo Input::server("REQUEST_METHOD");
-            var_dump($token);
-            var_dump(Input::all());
-            ?><script>alert('asddd')</script><?php 
             App::abort(404);
-
         }
-
         return View::make('user/reset')->with('token', Input::get('token'));
     }
 
@@ -104,7 +117,7 @@ extends Controller
         $credentials = Input::only(
             'email', 'password', 'password_confirmation', 'token'
         );
-
+        
         $response = Password::reset($credentials, function($user, $password)
         {
             $user->password = Hash::make($password);
@@ -120,7 +133,7 @@ extends Controller
                 return Redirect::back()->with('error', Lang::get($response));
 
             case Password::PASSWORD_RESET:
-                return Redirect::to('/');
+                return Redirect::to('info')->with('message', 'Su contraseña ha sido restablecida con éxito.');
         }
     }
 
