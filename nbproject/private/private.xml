@@ -3,13 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/V:/xampp/htdocs/proyectoPHP/app/controllers/UserController.php</file>
-            <file>file:/V:/xampp/htdocs/proyectoPHP/app/views/home.blade.php</file>
-            <file>file:/V:/xampp/htdocs/proyectoPHP/app/views/user/profile.blade.php</file>
+            <file>file:/V:/xampp/htdocs/proyectoPHP/app/views/navbar.blade.php</file>
+            <file>file:/V:/xampp/htdocs/proyectoPHP/app/views/test.blade.php</file>
+            <file>file:/V:/xampp/htdocs/proyectoPHP/app/controllers/ProductsController.php</file>
             <file>file:/V:/xampp/htdocs/proyectoPHP/app/views/layout.blade.php</file>
-            <file>file:/V:/xampp/htdocs/proyectoPHP/app/views/user/login.blade.php</file>
+            <file>file:/V:/xampp/htdocs/proyectoPHP/app/views/testProducts.blade.php</file>
+            <file>file:/V:/xampp/htdocs/proyectoPHP/app/models/Product.php</file>
             <file>file:/V:/xampp/htdocs/proyectoPHP/app/routes.php</file>
-            <file>file:/V:/xampp/htdocs/proyectoPHP/app/views/user/reset.blade.php</file>
             <file>file:/V:/xampp/htdocs/proyectoPHP/app/views/header.blade.php</file>
         </group>
     </open-files>

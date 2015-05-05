@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -59,6 +60,15 @@ $framework = $app['path.base'].
 
 require $framework.'/Illuminate/Foundation/start.php';
 
+/**
+ * <code>
+ * {? $old_section = "whatever" ?}
+ * </code>
+ */
+Blade::extend(function($value) {
+    return preg_replace('/\{\?(.+)\?\}/', '<?php ${1} ?>', $value);
+});
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application
@@ -69,5 +79,6 @@ require $framework.'/Illuminate/Foundation/start.php';
 | from the actual running of the application and sending responses.
 |
 */
+
 
 return $app;

@@ -1,23 +1,32 @@
 @extends("layout")
 @section("content")
+    <p>{{ HTML::link('user/remind', '¿Has olvidado tu contraseña?') }}</p>
     {{ Form::open(array(
         'url' => 'user/login',
         'autocomplete' => 'off',
         'method' => 'POST'
     )) }}
-    {{ Form::label("username", "Username") }}
-    {{ Form::text("username", Input::get("username"), [
-        "placeholder" => "john.smith"
-    ]) }}
-    {{ Form::label("password", "Password") }}
-    {{ Form::password("password", [
-        "placeholder" => "******"
-    ]) }}
-    @if ($error = $errors->first("password"))
+    <div class="form-group">  
+        {{ Form::label("username", "Username") }}
+        {{ Form::text("username", Session::get("username"), [
+            "placeholder" => "john.smith",
+            'required' => 'required'
+        ]) }}
+    </div>
+    <div class="form-group">  
+        {{ Form::label("password", "Password") }}
+        {{ Form::password("password", [
+            "placeholder" => "******",
+            'required' => 'required'
+        ]) }}
+    </div>
+    @if ($error = Session::get('errors'))
         <div class="error">
-            {{ $error }}
+            {{ $error->first('password') }}
         </div>
     @endif
-    {{ Form::submit("login") }}
+    <div class="form-group"> 
+        {{ Form::submit("Entrar", ["class" => "btn btn-primary"]) }}
+    </div>
     {{ Form::close() }}
 @stop

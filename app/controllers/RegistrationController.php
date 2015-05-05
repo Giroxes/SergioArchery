@@ -27,7 +27,12 @@ class RegistrationController extends \BaseController {
             "password_confirmation"
         );
         
-        $validator = Validator::make($input, $rules);
+        $messages = array(
+            'password.confirmed' => 'The passwords must match.',
+            'username.unique' => 'Nombre de usuario no disponible.',
+        );
+        
+        $validator = Validator::make($input, $rules, $messages);
         
         if ($validator->fails()) {
             return Redirect::back()->withInput()->withErrors($validator);
@@ -61,6 +66,7 @@ class RegistrationController extends \BaseController {
             App::abort(404);
         }
         
+        $user->admin = false;
         $user->confirmed = 1;
         $user->confirmation_code = null;
         $user->save();
@@ -68,4 +74,8 @@ class RegistrationController extends \BaseController {
         return Redirect::to('info')->with('message', 'Su correo electrónico ha sido confirmado correctamente. Ya puede iniciar sesión en nuestra web.');
     }
     
+    public function missingMethod($parameters = array())
+    {
+        return Redirect::to('home');
+    }
 }

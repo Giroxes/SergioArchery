@@ -43,7 +43,12 @@ extends Controller
 
             if (Auth::attempt($credentials))
             {
-                return Redirect::to("user/profile");
+                if (Auth::user()->confirmed) {
+                    return Redirect::to("user/profile");
+                } else {
+                    Auth::logout();
+                    return Redirect::to("info")->with('message', 'Para iniciar sesión primero deberá confirmar su correo electrónico.');
+                }
             }
         }
 
@@ -56,7 +61,7 @@ extends Controller
         $data["username"] = Input::get("username");
 
         return Redirect::to("user/login")
-            ->withInput($data);
+            ->with($data);
     }
             
     public function getProfile()
@@ -121,7 +126,6 @@ extends Controller
         $response = Password::reset($credentials, function($user, $password)
         {
             $user->password = Hash::make($password);
-
             $user->save();
         });
 
@@ -133,8 +137,14 @@ extends Controller
                 return Redirect::back()->with('error', Lang::get($response));
 
             case Password::PASSWORD_RESET:
+                $user->remember_token = null;
+                $user->save();
                 return Redirect::to('info')->with('message', 'Su contraseña ha sido restablecida con éxito.');
         }
     }
 
+    public function missingMethod($parameters = array())
+    {
+        return Redirect::to('home');
+    }
 }
