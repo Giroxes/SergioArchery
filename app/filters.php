@@ -37,7 +37,7 @@ Route::filter('auth', function()
 {
 	if (Auth::guest())
 	{
-		return Redirect::route("user/login");
+		return Redirect::to("user/login");
 	}
 });
 
@@ -47,6 +47,12 @@ Route::filter('auth.basic', function()
 	return Auth::basic();
 });
 
+Route::filter('admin', function($route, $request)
+{
+    if ( ! Auth::user()->isAdmin()) {
+        return App::abort(401, 'You are not authorized.');
+    }
+});
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

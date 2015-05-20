@@ -1,64 +1,173 @@
-@extends("layout")
+﻿@extends("layout")
+@section("style")
+<style>
+    form {
+        margin:0;
+        padding:0;
+        display: inline
+    }
+    .loading {
+        width: 100%;
+        height: 50px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto
+    }
+    .pagination {
+        margin-left: 5px
+    }
+</style>
+@stop
+
 @section("content")
-
 {? $categorias = Category::where('parent_id', '=', null)->get() ?}
-<ul id="myTab" class="nav nav-tabs nav-justified" role="tablist">
-    <li role="presentation" class="active"><a href="#categories" id="categories-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true"><h1>Categorías</h1></a></li>
-    <li role="presentation" class=""><a href="#products" role="tab" id="products-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false"><h1>Productos</h1></a></li>
-</ul>
-
-<div id="myTabContent" class="tab-content">
-    <div role="tabpanel" class="tab-pane fade active in" id="categories" aria-labelledby="home-tab">
-    @foreach($categorias as $categoria)
-        {? $subcategorias = $categoria->subcategories ?}
+@foreach($categorias as $categoria)
+    {? $subcategorias = $categoria->subcategories ?}
+    <div class="panel panel-default" style="background-color: lightgray" id="{{ $categoria->id }}">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            <h2>
+                {{ ucfirst($categoria->name) }}
+                {{ HTML::link('admin/category/' . $categoria->id . '/edit', 'Editar', [
+                    'class' => 'btn btn-primary navbar-btn',
+                    'style' => 'margin-left: 3px;'
+                ]) }}
+                
+                {{ Form::open([
+                    'url' => 'admin/category/' . $categoria->id,
+                    'method' => 'DELETE'
+                ]) }}
+                    {{ Form::submit('Eliminar', ['class' => 'btn btn-danger navbar-btn'])}}
+                {{ Form::close() }}
+                
+                {{ Form::open([
+                    'url' => 'admin/category/create',
+                    'method' => 'GET'
+                ]) }}
+                    {{ Form::hidden('parentId', $categoria->id) }}
+                    {{ Form::submit('Añadir subcategoria', [
+                        'class' => 'btn btn-success navbar-btn',
+                        'style' => 'margin-left: 10px'
+                    ]) }}
+                {{ Form::close() }}
+                {{ Form::open(['url' => 'admin/product/create', 'method' => 'GET']) }}
+                    {{ Form::hidden('categoryId', $categoria->id) }}
+                    {{ Form::submit('Añadir producto', ['class' => 'btn btn-success navbar-btn']) }}
+                {{ Form::close() }}
+                <button class="btn btn-warning btn-categoria">Mostrar/ocultar</button>
+            </h2>
+        </div>
+        @foreach($subcategorias as $subcategoria)
+        {? $productos = $subcategoria->products ?}
         <div class="panel panel-default">
             <!-- Default panel contents -->
-            <div class="panel-heading">
+            <div class="panel-heading" style="background-color: gray" id="{{ $subcategoria->id }}">
                 <h2>
-                    {{ ucfirst($categoria->name) }}
-                    {{ Form::open(['url' => 'admin/category/' . $categoria->id, 'method' => 'DELETE']) }}
-                    {{ HTML::link('admin/category/' . $categoria->id . '/edit', 'Editar', [
+                    {{ ucfirst($subcategoria->name) }}
+                    {{ HTML::link('admin/category/' . $subcategoria->id . '/edit', 'Editar', [
                         'class' => 'btn btn-primary navbar-btn',
                         'style' => 'margin-left: 3px;'
                     ]) }}
-                    {{ Form::submit('Eliminar', ['class' => 'btn btn-danger navbar-btn'])}}
+                    
+                    {{ Form::open([
+                        'url' => 'admin/category/' . $subcategoria->id,
+                        'method' => 'DELETE'
+                    ]) }}
+                        {{ Form::submit('Eliminar', ['class' => 'btn btn-danger navbar-btn'])}}
                     {{ Form::close() }}
+                    
+                    {{ Form::open(['url' => 'admin/product/create', 'method' => 'GET']) }}
+                        {{ Form::hidden('categoryId', $subcategoria->id) }}
+                        {{ Form::hidden('parentId', $categoria->id) }}
+                        {{ Form::submit('Añadir producto', ['class' => 'btn btn-success navbar-btn']) }}
+                    {{ Form::close() }}
+                    <button class="btn btn-warning btn-subcategoria">Mostrar/ocultar</button>
                 </h2>
             </div>
-            
+
             <!-- Table -->
-            <table class="table table-bordered table-striped">
-                <tbody>
-                @foreach($subcategorias as $subcategoria)
-                    <tr>
-                        <td>
-                            <h3>{{ ucfirst($subcategoria->name) }}</h3>
-                            {{ Form::open(['url' => 'admin/category/' . $subcategoria->id, 'method' => 'DELETE']) }}
-                            {{ HTML::link('admin/category/' . $subcategoria->id . '/edit', 'Editar', [
-                                'class' => 'btn btn-primary navbar-btn',
-                                'style' => 'margin-left: 3px;'
-                            ]) }}
-                            {{ Form::submit('Eliminar', ['class' => 'btn btn-danger navbar-btn'])}}
-                            {{ Form::close() }}
-                        </td>
-                    </tr>
-                @endforeach
-                    <tr>
-                        <td>
-                            {{ Form::open(['url' => 'admin/category/create', 'method' => 'GET']) }}
-                            {{ Form::hidden('parentId', $categoria->id) }}
-                            {{ Form::submit('Añadir subcategoria', ['class' => 'btn btn-success navbar-btn']) }}
-                            {{ Form::close() }}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                
+            </div>
         </div>
-    @endforeach
-    <a href="{{ URL::to('/admin/category/create') }}" class="btn btn-success navbar-btn" style="margin-left: 3px;"><h3>Añadir categoria</h3></a>
+        @endforeach
     </div>
-    <div role="tabpanel" class="tab-pane fade" id="products" aria-labelledby="profile-tab">
-        
-    </div>
-</div>
+@endforeach
+<a href="{{ URL::to('/admin/category/create') }}" class="btn btn-success navbar-btn" style="margin-left: 3px;"><h3>Añadir categoria</h3></a>
+<script>
+    $('.panel-default .panel-default').hide();
+    $('.table-responsive').hide();
+    
+    var botonesCat = $('.btn-categoria');
+    botonesCat.on('click', function (event) {
+        var panel = $(this).parents('.panel-default').children('.panel-default');
+        panel.toggle();
+    });
+    
+    
+    var botonesSub = $('.btn-subcategoria');
+    botonesSub.on('click', function (event) {
+        var panel = $(this).parents('.panel-default');
+        var catId = panel.children('.panel-heading').attr('id');
+        var tabla = panel.children('.table-responsive');
+        tabla.toggle();
+        tabla.html('<img src="http://localhost/proyectoPHP/public/img/loading.gif" class="loading">');
+        var url = 'http://localhost/proyectoPHP/public/ajax/' + catId;
+        showTabla(tabla, url);
+    });
+    
+    function paginationAjax(pagLinks) {
+        pagLinks.on('click', function (event) {
+            event.preventDefault();
+            var tabla = $(this).parents('.table-responsive');
+            var url = $(this).attr('href');
+            showTabla(tabla, url);
+        });
+    }
+    
+    function checkBoxes(chkHead, chkBody) {
+        chkHead.on('change', function (event) {
+            chkBody.prop('checked', chkHead[0].checked);
+        });
+    }
+    
+    function showTabla(tabla, url) {
+        $.ajax({
+            dataType: "html",
+            url: url,
+            success: function (d) {
+                tabla.html(d);
+                var pagLinks = tabla.find('.pagination a');
+                var chkHead = tabla.find('.chkHead');
+                var chkBody = tabla.find('.chkBody');
+                var desSel = tabla.find('.destroySelected');
+                checkBoxes (chkHead, chkBody);
+                paginationAjax(pagLinks);
+                destroySelected(desSel);
+            }
+        });
+    }
+    
+    function destroySelected(button) {
+        button.on('click', function (event) {
+            event.preventDefault();
+            var tabla = $(this).parents('.table-responsive');
+            var panel = $(this).parents('.panel-default');
+            var catId = panel.children('.panel-heading').attr('id');
+            var chks = tabla.find('.chkBody:checked:enabled');
+            chks.each(function (index, element){
+                var urlDel = "<?php echo URL::to('/admin/product'); ?>" + '/' + element.value ;
+                $.ajax({
+                    dataType: "html",
+                    url: urlDel,
+                    method: 'DELETE',
+                    success: function (d) {}
+                });
+            });
+            var url = 'http://localhost/proyectoPHP/public/ajax/' + catId;
+            showTabla(tabla, url);
+        });
+    }
+    
+</script>
 @stop

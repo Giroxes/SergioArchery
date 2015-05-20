@@ -80,7 +80,7 @@ class CategoriesController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+            return View::make('admin/editCategory')->with('categoria', Category::find($id));
 	}
 
 
@@ -92,7 +92,11 @@ class CategoriesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+            $categoria = Category::findOrFail($id);
+            $categoria->fill(Input::all());
+            $categoria->save();
+            
+            return Redirect::to('admin');
 	}
 
 
@@ -107,6 +111,5 @@ class CategoriesController extends \BaseController {
             Category::destroy($id);
             return Redirect::to('admin');
 	}
-
 
 }

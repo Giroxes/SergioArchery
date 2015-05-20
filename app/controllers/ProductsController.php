@@ -9,8 +9,7 @@ class ProductsController extends \BaseController {
 	 */
 	public function index()
 	{
-            $categorias = Category::where('parent_id','=',null)->get();
-            return View::make('categories', ['categorias' => $categorias]);
+            
 	}
 
 
@@ -21,7 +20,16 @@ class ProductsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+            if(!empty(Input::get('parentId'))) {
+                $types = Category::find(Input::get('parentId'))->subcategories->lists('name', 'id');
+            } else {
+                $types = Category::find(Input::get('categoryId'))->subcategories->lists('name', 'id');
+            }
+            $data = [
+                'categoryId' => Input::get('categoryId'),
+                'types' => $types
+            ];
+            return View::make('admin/createProduct')->with($data);
 	}
 
 
@@ -32,7 +40,12 @@ class ProductsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+            $producto = new Product(Input::all());
+            $producto->price *= 100;
+            $producto->discount *= 100;
+            $producto->save();
+            
+            return Redirect::to('admin');
 	}
 
 
@@ -56,7 +69,11 @@ class ProductsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+            $data = [
+                'producto' => Product::find($id),
+                'types' => Category::whereNotNull('parent_id')->lists('name', 'id')
+            ];
+            return View::make('admin/editProduct')->with($data);
 	}
 
 
@@ -68,7 +85,14 @@ class ProductsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+            $producto = Product::findOrFail($id);
+            $producto->fill(Input::all());
+            $producto->price *= 100;
+            $producto->discount *= 100;
+            null == Input::get('home') ? $producto->home = false : '';
+            $producto->save();
+            
+            return Redirect::to('admin');
 	}
 
 
@@ -80,8 +104,8 @@ class ProductsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+            Product::destroy($id);
+            return Redirect::to('admin');
 	}
-
 
 }

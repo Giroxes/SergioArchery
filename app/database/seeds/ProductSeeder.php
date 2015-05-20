@@ -25,39 +25,534 @@ extends DatabaseSeeder
         
         $products = [
             [
-                "name" => "Perfexion Px2",
-                "trademark" => 'Xpedition',
-                "price" => 999.95,
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
                 "discount" => 10,
-                "category_id" => $poleas
-             ],
-            [
-                "name" => "Ion Jet Black",
-                "trademark" => 'Prime',
-                "price" => 999.95,
-                "discount" => 10,
-                "category_id" => $poleas
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
              ],
             [
                 "name" => "Super Kodiak",
                 "trademark" => 'Bear',
                 "price" => 499.95,
                 "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
                 "category_id" => $recurvado
              ],
             [
-                "name" => "Swift",
-                "trademark" => 'Great Plains',
-                "price" => 889.95,
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
                 "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
                 "category_id" => $recurvado
              ],
             [
-                "name" => "Carbon Express Maxima Blue Streak Select",
-                "trademark" => 'Xpedition',
-                "price" => 12.95,
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
                 "discount" => 10,
-                "category_id" => $carbono
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "cvvvvv",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "xvbbb",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "xvbxxxak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Super Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "bndgh",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Sertyerty",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Sertyiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Sutyodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Superdfhd Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Scniak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Supewertk",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "bvnxvc",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "cxcvb",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "zxcvx",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "cvbxak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Scvnak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Supsdfher Kodiak",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "Supdfg",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "asdf",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "asd",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "asd",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
+             ],
+            [
+                "name" => "asd",
+                "trademark" => 'Bear',
+                "price" => 499.95,
+                "discount" => 10,
+                "weight" => 60,
+                "length" => 68,
+                "home" => false,
+                "category_id" => $recurvado
              ]
          ];
 

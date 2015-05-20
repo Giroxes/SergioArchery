@@ -1,9 +1,9 @@
 @extends("layout")
 @section("content")
 
-{{ Form::open([
-    'url' => 'admin/category',
-    'method' => 'POST',
+{{ Form::model($categoria, [
+    'url' => 'admin/category/' . $categoria->id,
+    'method' => 'PATCH',
     'role' => 'form'
 ]) }}
 <div class='form-group'>
@@ -14,10 +14,9 @@
     ]) }}
 </div>
 <div class='form-group'>
-    {{ Form::submit('Crear', [
+    {{ Form::submit('Guardar cambios', [
         'class' => 'btn btn-primary'
     ]) }}
 </div>
-{{ Form::hidden('parentId', $parentId) }}
 {{ Form::close() }}
 @stop
