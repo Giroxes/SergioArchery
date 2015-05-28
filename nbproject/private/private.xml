@@ -5,6 +5,7 @@
         <group>
             <file>file:/V:/xampp/htdocs/proyectoPHP/app/views/admin/productos.blade.php</file>
             <file>file:/V:/xampp/htdocs/proyectoPHP/app/controllers/ProductsController.php</file>
+            <file>file:/V:/xampp/htdocs/proyectoPHP/app/controllers/XMLController.php</file>
             <file>file:/V:/xampp/htdocs/proyectoPHP/app/views/admin/menu.blade.php</file>
             <file>file:/V:/xampp/htdocs/proyectoPHP/app/routes.php</file>
             <file>file:/V:/xampp/htdocs/proyectoPHP/app/controllers/CategoriesController.php</file>

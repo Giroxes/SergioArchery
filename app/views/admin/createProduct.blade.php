@@ -1,10 +1,11 @@
 @extends("layout")
 @section("content")
-
+<p>{{ $errors->first() }}</p>
 {{ Form::open([
     'url' => 'admin/product',
     'method' => 'POST',
-    'role' => 'form'
+    'role' => 'form',
+    'files' => true
 ]) }}
 <div class='form-group'>
     {{ Form::label('name', 'Nombre') }}
@@ -22,29 +23,10 @@
 </div>
 <div class='form-group'>
     {{ Form::label('category_id', 'Categoría') }}<br>
-    {{ Form::select('category_id', $types, $categoryId) }}
-</div>
-<div class='form-group'>
-    {{ Form::label('weight', 'Potencia') }}
-    <div class='input-group'>
-        <span class="input-group-addon" id="basic-addon1">#</span>
-        {{ Form::number('weight', null, [
-            'class' => 'form-control',
-            'required' => 'required',
-            'aria-describedby' => 'basic-addon1'
-        ]) }}
-    </div>
-</div>
-<div class='form-group'>
-    {{ Form::label('length', 'Longitud') }}
-    <div class='input-group'>
-        <span class="input-group-addon" id="basic-addon2">"</span>
-        {{ Form::number('length', null, [
-            'class' => 'form-control',
-            'required' => 'required',
-            'aria-describedby' => 'basic-addon1'
-        ]) }}
-    </div>
+    {{ Form::select('category_id', $types, $categoryId, [
+        'class' => 'form-control',
+        'required' => 'required'
+    ]) }}
 </div>
 <div class='form-group'>
     {{ Form::label('price', 'Precio') }}
@@ -69,8 +51,23 @@
     </div>
 </div>
 <div class='form-group'>
+    {{ Form::label('image', 'Imagen') }}
+    {{ Form::file('image', [
+            'class' => 'form-control',
+            'required' => 'required'
+        ]) }}
+</div>
+<div class='form-group'>
     {{ Form::label('home', 'Mostrar en Inicio') }}
     {{ Form::checkbox('home', true, false) }}
+</div>
+<div class='form-group'>
+    {{ Form::label('description', 'Descripción') }}
+    <div class='input-group'>
+        {{ Form::textarea('description', null, [
+            'class' => 'form-control'
+        ]) }}
+    </div>
 </div>
 <div class='form-group'>
     {{ Form::submit('Crear', [

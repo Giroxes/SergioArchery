@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         {{ HTML::style('assets/css/bootstrap.min.css', array('media' => 'screen')) }}
+        {{ HTML::style('assets/css/msgBoxLight.css', array('media' => 'screen')) }}
         <script src="//code.jquery.com/jquery.js"></script>
+        {{ HTML::script('assets/js/jquery.msgBox.js') }}
         @yield("head")
         <title>Sergio's Archery</title>
         @yield("style")

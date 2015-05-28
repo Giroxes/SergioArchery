@@ -40,12 +40,39 @@ class ProductsController extends \BaseController {
 	 */
 	public function store()
 	{
+            $rules = [
+                "name" => "required|unique:products"        
+            ];
+
+            $input = Input::only(
+                "name"
+            );
+
+            $messages = array(
+                'name.unique' => 'El producto ya existe.',
+            );
+
+            $validator = Validator::make($input, $rules, $messages);
+
+            if ($validator->fails()) {
+                return Redirect::back()->withInput()->withErrors($validator);
+            }
+            
+            $image = Input::file('image');
+            $image->move('images/products', $image->getClientOriginalName());
+            
             $producto = new Product(Input::all());
             $producto->price *= 100;
             $producto->discount *= 100;
-            $producto->save();
+            $producto->image = $image->getClientOriginalName();
+            $producto->save();            
             
-            return Redirect::to('admin');
+            $message = "Producto creado correctamente";
+            $type = 'info';
+            return Redirect::to('admin')->with([
+                'message' => $message,
+                'type' => $type
+            ]);
 	}
 
 
@@ -85,6 +112,24 @@ class ProductsController extends \BaseController {
 	 */
 	public function update($id)
 	{
+            $rules = [
+                "name" => "required|unique:products"        
+            ];
+
+            $input = Input::only(
+                "name"
+            );
+
+            $messages = array(
+                'name.unique' => 'El producto ya existe.',
+            );
+
+            $validator = Validator::make($input, $rules, $messages);
+
+            if ($validator->fails()) {
+                return Redirect::back()->withInput()->withErrors($validator);
+            }
+            
             $producto = Product::findOrFail($id);
             $producto->fill(Input::all());
             $producto->price *= 100;
@@ -92,7 +137,13 @@ class ProductsController extends \BaseController {
             null == Input::get('home') ? $producto->home = false : '';
             $producto->save();
             
-            return Redirect::to('admin');
+            $message = "Producto actualizado correctamente";
+            $type = 'info';
+            
+            return Redirect::to('admin')->with([
+                'message' => $message,
+                'type' => $type
+            ]);
 	}
 
 
@@ -105,7 +156,13 @@ class ProductsController extends \BaseController {
 	public function destroy($id)
 	{
             Product::destroy($id);
-            return Redirect::to('admin');
+            
+            $message = "Producto eliminado correctamente";
+            $type = 'info';
+            return Redirect::to('admin')->with([
+                'message' => $message,
+                'type' => $type
+            ]);
 	}
 
 }

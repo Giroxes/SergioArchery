@@ -56,7 +56,12 @@ class CategoriesController extends \BaseController {
                 'parent_id' => $parentId
             ]);
             
-            return Redirect::to('admin');
+            $message = "Categoría creada correctamente";
+            $type = 'info';
+            return Redirect::to('admin')->with([
+                'message' => $message,
+                'type' => $type
+            ]);
 	}
 
 
@@ -92,11 +97,34 @@ class CategoriesController extends \BaseController {
 	 */
 	public function update($id)
 	{
+            $rules = [
+                "name" => "required|unique:categories"        
+            ];
+
+            $input = Input::only(
+                "name"
+            );
+
+            $messages = array(
+                'name.unique' => 'La categoría ya existe.',
+            );
+
+            $validator = Validator::make($input, $rules, $messages);
+
+            if ($validator->fails()) {
+                return Redirect::back()->withInput()->withErrors($validator);
+            }
+            
             $categoria = Category::findOrFail($id);
             $categoria->fill(Input::all());
             $categoria->save();
             
-            return Redirect::to('admin');
+            $message = "Categoría actualizada correctamente";
+            $type = 'info';
+            return Redirect::to('admin')->with([
+                'message' => $message,
+                'type' => $type
+            ]);
 	}
 
 
@@ -109,7 +137,13 @@ class CategoriesController extends \BaseController {
 	public function destroy($id)
 	{
             Category::destroy($id);
-            return Redirect::to('admin');
+            
+            $message = "Categoría eliminada correctamente";
+            $type = 'info';
+            return Redirect::to('admin')->with([
+                'message' => $message,
+                'type' => $type
+            ]);
 	}
 
 }

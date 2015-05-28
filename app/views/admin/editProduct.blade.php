@@ -22,27 +22,17 @@
 </div>
 <div class='form-group'>
     {{ Form::label('category_id', 'Categoría') }}<br>
-    {{ Form::select('category_id', $types, $producto->category_id) }}
+    {{ Form::select('category_id', $types, $producto->category_id, [
+        'class' => 'form-control',
+        'required' => 'required',
+        'disabled' => true
+    ]) }}
 </div>
 <div class='form-group'>
-    {{ Form::label('weight', 'Potencia') }}
+    {{ Form::label('description', 'Descripción') }}
     <div class='input-group'>
-        <span class="input-group-addon" id="basic-addon1">#</span>
-        {{ Form::number('weight', null, [
-            'class' => 'form-control',
-            'required' => 'required',
-            'aria-describedby' => 'basic-addon1'
-        ]) }}
-    </div>
-</div>
-<div class='form-group'>
-    {{ Form::label('length', 'Longitud') }}
-    <div class='input-group'>
-        <span class="input-group-addon" id="basic-addon2">"</span>
-        {{ Form::number('length', null, [
-            'class' => 'form-control',
-            'required' => 'required',
-            'aria-describedby' => 'basic-addon1'
+        {{ Form::textarea('description', null, [
+            'class' => 'form-control'
         ]) }}
     </div>
 </div>

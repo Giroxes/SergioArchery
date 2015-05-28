@@ -1,6 +1,6 @@
 @extends("layout")
 @section("content")
-
+<p>{{ $errors->first() }}</p>
 {{ Form::open([
     'url' => 'admin/category',
     'method' => 'POST',

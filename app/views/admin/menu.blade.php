@@ -20,6 +20,14 @@
 @stop
 
 @section("content")
+{{ Form::open([
+    'url' => 'admin/xml',
+    'files' => true
+]) }}
+    {{ Form::file('file') }}
+    {{ Form::submit('Enviar') }}
+{{ Form::close() }}
+
 {? $categorias = Category::where('parent_id', '=', null)->get() ?}
 @foreach($categorias as $categoria)
     {? $subcategorias = $categoria->subcategories ?}
@@ -111,7 +119,7 @@
         var catId = panel.children('.panel-heading').attr('id');
         var tabla = panel.children('.table-responsive');
         tabla.toggle();
-        tabla.html('<img src="http://localhost/proyectoPHP/public/img/loading.gif" class="loading">');
+        tabla.html('<img src="http://localhost/proyectoPHP/public/images/loading.gif" class="loading">');
         var url = 'http://localhost/proyectoPHP/public/ajax/' + catId;
         showTabla(tabla, url);
     });
@@ -168,6 +176,12 @@
             showTabla(tabla, url);
         });
     }
-    
+    <?php if (Session::get('message')) { ?>
+    $.msgBox({
+        title:"Atención",
+        content: '<?php echo Session::get('message') ?>',
+        type: '<?php echo Session::get('type') ?>'
+    });
+    <?php } ?>
 </script>
 @stop

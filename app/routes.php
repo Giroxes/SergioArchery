@@ -39,4 +39,6 @@ Route::group(array('before' => array('auth|admin')), function()
     
     Route::resource('admin/category', 'CategoriesController');
     Route::resource('admin/product', 'ProductsController');
+    
+    Route::any('admin/xml', 'XMLController@xml');
 });

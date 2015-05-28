@@ -12,12 +12,12 @@
                     'style' => 'margin-left: 3px;'
                 ]) }}
             </th>
+            <th><h3>Id</h3></th>
             <th><h3>Nombre</h3></th>
             <th><h3>Marca</h3></th>
-            <th><h3>Potencia</h3></th>
-            <th><h3>Longitud</h3></th>
             <th><h3>Precio</h3></th>
             <th><h3>Descuento</h3></th>
+            <th><h3>Descripción</h3></th>
             <th><h3>Inicio</h3></th>
         </tr>
     </thead>
@@ -36,12 +36,12 @@
                     {{ Form::submit('Eliminar', ['class' => 'btn btn-danger navbar-btn'])}}
                 {{ Form::close() }}
             </td>
+            <td>{{ $producto->id }}</td>
             <td>{{ ucfirst($producto->name) }}</td>
             <td>{{ ucfirst($producto->trademark) }}</td>
-            <td>{{ $producto->weight }}#</td>
-            <td>{{ $producto->length }}"</td>
             <td>{{ $producto->price / 100 }}€</td>
             <td>{{ $producto->discount / 100 }}%</td>
+            <td>{{ $producto->description }}</td>
             <td><span class="glyphicon glyphicon-{{ $producto->home ? 'ok' : 'remove' }}" aria-hidden="true"></span></td>
         </tr>
     @endforeach                        
