@@ -16,11 +16,11 @@
             @else
                 <li>{{ HTML::link('user/login', 'Entrar') }}</li>
                 <li>{{ HTML::link('account/register', 'Registrar') }}</li>
-            @endif
+            @endif                   
             </ul>
             <ul class="nav navbar-nav">
                 <li>
-                    {{ HTML::link('home', 'Home') }}
+                    {{ HTML::link('home', 'Inicio') }}
                 </li>
                 @foreach($categoriasnav as $categorianav)
                 {? $subcategoriasnav = $categorianav->subcategories ?}
@@ -34,13 +34,23 @@
                     @if(!$subcategoriasnav->isEmpty())
                     <ul class="dropdown-menu" role="menu">
                         @foreach($subcategoriasnav as $subcategorianav)
-                        <li>{{ HTML::link('products/' . $categorianav->name . '/' . $subcategorianav->name, ucfirst($subcategorianav->name)) }}</li>
+                        <li>{{ HTML::link('category/' . $subcategorianav->name, ucfirst($subcategorianav->name)) }}</li>
                         @endforeach
                     </ul>
                     @endif              
                 </li>                
                 @endforeach
             </ul>
+            <div class="col-sm-3 col-md-3 pull-left nav navbar-nav">
+                <form class="navbar-form" role="search" method="get" action="{{ URL::to('search') }}">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar" name="search">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
       </div>
     </nav>

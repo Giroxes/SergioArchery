@@ -1,0 +1,97 @@
+/* 
+    Created on : 30-may-2015, 20:50:06
+    Author     : Sergio
+*/
+
+@font-face {
+    font-family: logo;
+    src: url(../assets/fonts/papyrus.ttf);
+}
+
+body {
+    background: #ffffff url('//cdn.shopify.com/s/files/1/0271/9051/t/2/assets/bg-music.png?3789207861723069757') repeat scroll;
+    margin-bottom: 100px;
+}
+
+#logo {
+    font-family: logo;
+    text-align: center;
+    font-size: 100px;
+}
+
+.productCarousel {
+    width: 50%;
+    margin-left: 10%;
+}
+
+.carousel-caption{
+    color: black;
+    font-size: 30px;
+    text-align: left;
+    margin-bottom: 20%;
+    margin-left: 30%;
+}
+
+.carousel h2{
+    background: white;
+    font-style: italic;
+    margin-left: 15px;
+    padding-top: 10px;
+    text-shadow: 0 1px 2px rgba(0,0,0,.6);
+}
+
+.carousel-caption h3{
+    color: black;
+    font-size: 50px;
+}
+
+.carousel{
+    background: white;
+}
+
+.footer{
+    color: white;
+    background-color: #080808;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer ul li{
+    display: inline;
+    
+}
+
+.footer ul li a{
+    color: white;
+    margin-right: 25px
+}
+
+#order {
+    width: auto;
+    height: auto;
+    display: inline;
+}
+
+.name, .trademark, .oldPrice, .price {
+    text-shadow: 0 1px 2px rgba(0,0,0,.6);
+}
+
+.name {
+    font-size: 50px
+}
+
+.trademark {
+    font-size: 35px
+}
+
+.price, .oldPrice {
+    font-size: 20px
+}
+
+#productImage {
+    height: 80%
+}
+
+
+

@@ -1,10 +1,11 @@
 @extends("layout")
 @section("content")
-
+<p>{{ $errors->first() }}</p>
 {{ Form::model($producto, [
     'url' => 'admin/product/' . $producto->id,
     'method' => 'PATCH',
-    'role' => 'form'
+    'role' => 'form',
+    'files' => true
 ]) }}
 <div class='form-group'>
     {{ Form::label('name', 'Nombre') }}
@@ -29,14 +30,6 @@
     ]) }}
 </div>
 <div class='form-group'>
-    {{ Form::label('description', 'Descripción') }}
-    <div class='input-group'>
-        {{ Form::textarea('description', null, [
-            'class' => 'form-control'
-        ]) }}
-    </div>
-</div>
-<div class='form-group'>
     {{ Form::label('price', 'Precio') }}
     <div class='input-group'>
         <span class="input-group-addon" id="basic-addon3">€</span>
@@ -59,8 +52,22 @@
     </div>
 </div>
 <div class='form-group'>
+    {{ Form::label('image', 'Imagen') }}
+    {{ Form::file('image', [
+            'class' => 'form-control'
+        ]) }}
+</div>
+<div class='form-group'>
     {{ Form::label('home', 'Mostrar en Inicio') }}
     {{ Form::checkbox('home', true, null) }}
+</div>
+<div class='form-group'>
+    {{ Form::label('description', 'Descripción') }}
+    <div class='input-group'>
+        {{ Form::textarea('description', null, [
+            'class' => 'form-control'
+        ]) }}
+    </div>
 </div>
 <div class='form-group'>
     {{ Form::submit('Guardar cambios', [

@@ -16,16 +16,25 @@
     .pagination {
         margin-left: 5px
     }
+    #xml .btn {
+        margin-bottom: 15px;
+        margin-top: 5px;
+    }
 </style>
 @stop
 
 @section("content")
 {{ Form::open([
     'url' => 'admin/xml',
-    'files' => true
+    'files' => true,
+    'id' => 'xml',
+    'role' => 'form'
 ]) }}
+    {{ Form::label('file', 'Cargar archivo XML') }}
     {{ Form::file('file') }}
-    {{ Form::submit('Enviar') }}
+    {{ Form::submit('Enviar', [
+        'class' => 'btn btn-primary'
+    ]) }}
 {{ Form::close() }}
 
 {? $categorias = Category::where('parent_id', '=', null)->get() ?}
@@ -176,12 +185,16 @@
             showTabla(tabla, url);
         });
     }
-    <?php if (Session::get('message')) { ?>
-    $.msgBox({
-        title:"Atención",
-        content: '<?php echo Session::get('message') ?>',
-        type: '<?php echo Session::get('type') ?>'
-    });
-    <?php } ?>
+    <?php 
+    if (Session::get('message')) { 
+    ?>
+        $.msgBox({
+            title:"Atención",
+            content: '<?php echo Session::get('message') ?>',
+            type: '<?php echo Session::get('type') ?>'
+        });
+    <?php
+    } 
+    ?>
 </script>
 @stop

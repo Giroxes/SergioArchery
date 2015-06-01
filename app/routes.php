@@ -15,11 +15,16 @@ Route::any('info', function(){
     return Redirect::to('home');
 });
 
-Route::any('products/{categoria}/{subcategoria}', function($categoria, $subcategoria){
-    $subcat = Category::where('name', $subcategoria)->get();
-    $productos = $subcat->first()->products;
-    return View::make('testProducts', ['productos' => $productos]);
+Route::any('search', function(){
+    $productos = Product::where('name', Input::get('search'))->orWhere('trademark', Input::get('search'))->get();
+    return View::make('products/search')->with('productos', $productos);
 });
+
+Route::resource('category', 'CategoriesController',
+                array('only' => array('show')));
+
+Route::resource('product', 'ProductsController',
+                array('only' => array('show')));
 
 Route::controller('user', 'UserController');
 Route::controller('account', 'RegistrationController');

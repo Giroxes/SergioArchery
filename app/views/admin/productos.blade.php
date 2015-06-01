@@ -17,7 +17,6 @@
             <th><h3>Marca</h3></th>
             <th><h3>Precio</h3></th>
             <th><h3>Descuento</h3></th>
-            <th><h3>Descripción</h3></th>
             <th><h3>Inicio</h3></th>
         </tr>
     </thead>
@@ -41,7 +40,6 @@
             <td>{{ ucfirst($producto->trademark) }}</td>
             <td>{{ $producto->price / 100 }}€</td>
             <td>{{ $producto->discount / 100 }}%</td>
-            <td>{{ $producto->description }}</td>
             <td><span class="glyphicon glyphicon-{{ $producto->home ? 'ok' : 'remove' }}" aria-hidden="true"></span></td>
         </tr>
     @endforeach                        

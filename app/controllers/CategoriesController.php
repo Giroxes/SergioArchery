@@ -71,9 +71,14 @@ class CategoriesController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($catName)
 	{
-		//
+            $categoria = Category::where('name', $catName)->first();
+            if (!$categoria || !$categoria->parent) {
+                App::abort(404);
+            }
+            $productos = $categoria->products;
+            return View::make('products/category', ['productos' => $productos]);
 	}
 
 

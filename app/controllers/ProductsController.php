@@ -84,7 +84,11 @@ class ProductsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+	    $producto = Product::find($id);
+            if (!$producto) {
+                App::abort(404);
+            }
+            return View::make('products/singleProduct', ['producto' => $producto]);
 	}
 
 
@@ -113,7 +117,7 @@ class ProductsController extends \BaseController {
 	public function update($id)
 	{
             $rules = [
-                "name" => "required|unique:products"        
+                "name" => "required"        
             ];
 
             $input = Input::only(
@@ -135,6 +139,13 @@ class ProductsController extends \BaseController {
             $producto->price *= 100;
             $producto->discount *= 100;
             null == Input::get('home') ? $producto->home = false : '';
+            
+            if (Input::file('image')) {
+                File::delete(public_path() . '/images/products/' . $producto->image);
+                $image = Input::file('image');
+                $image->move('images/products', $image->getClientOriginalName());
+                $producto->image = $image->getClientOriginalName();
+            }
             $producto->save();
             
             $message = "Producto actualizado correctamente";
@@ -156,6 +167,7 @@ class ProductsController extends \BaseController {
 	public function destroy($id)
 	{
             Product::destroy($id);
+            File::delete(public_path() . '/images/products/' . Product::find($id)->first()->image);
             
             $message = "Producto eliminado correctamente";
             $type = 'info';

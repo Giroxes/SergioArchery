@@ -44,7 +44,7 @@ extends Controller
             if (Auth::attempt($credentials))
             {
                 if (Auth::user()->confirmed) {
-                    return Redirect::to("user/profile");
+                    return Redirect::to("info")->with('message', 'Ha iniciado sesión correctamente.');
                 } else {
                     Auth::logout();
                     return Redirect::to("info")->with('message', 'Para iniciar sesión primero deberá confirmar su correo electrónico.');

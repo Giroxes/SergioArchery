@@ -27,6 +27,8 @@ class XMLController extends \BaseController {
                                     'name' => $producto->name,
                                     'category_id' => $categoria_id
                                 ])->fill((array)$producto);
+                                $prod->price = ($producto->price ? (float)$producto->price * 100 : $prod->price);
+                                $prod->discount = ($producto->discount ? (float)$producto->discount * 100 : $prod->discount);
                                 $prod->save();
                             }
                         }
