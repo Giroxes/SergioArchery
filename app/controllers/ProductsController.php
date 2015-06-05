@@ -59,12 +59,13 @@ class ProductsController extends \BaseController {
             }
             
             $image = Input::file('image');
-            $image->move('images/products', $image->getClientOriginalName());
             
             $producto = new Product(Input::all());
             $producto->price *= 100;
             $producto->discount *= 100;
-            $producto->image = $image->getClientOriginalName();
+            $producto->save();            
+            $image->move('images/products', '(' . $producto->id . ')' . $image->getClientOriginalName());
+            $producto->image = '(' . $producto->id . ')' . $image->getClientOriginalName();
             $producto->save();            
             
             $message = "Producto creado correctamente";
@@ -143,8 +144,8 @@ class ProductsController extends \BaseController {
             if (Input::file('image')) {
                 File::delete(public_path() . '/images/products/' . $producto->image);
                 $image = Input::file('image');
-                $image->move('images/products', $image->getClientOriginalName());
-                $producto->image = $image->getClientOriginalName();
+                $image->move('images/products', '(' . $producto->id . ')' . $image->getClientOriginalName());
+                $producto->image = '(' . $producto->id . ')' . $image->getClientOriginalName();
             }
             $producto->save();
             
@@ -166,8 +167,8 @@ class ProductsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-            Product::destroy($id);
             File::delete(public_path() . '/images/products/' . Product::find($id)->first()->image);
+            Product::destroy($id);
             
             $message = "Producto eliminado correctamente";
             $type = 'info';

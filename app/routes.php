@@ -16,7 +16,8 @@ Route::any('info', function(){
 });
 
 Route::any('search', function(){
-    $productos = Product::where('name', Input::get('search'))->orWhere('trademark', Input::get('search'))->get();
+    $search = Input::get('search');
+    $productos = Product::where('name', 'LIKE', "%$search%")->orWhere('trademark', 'LIKE', "%$search%")->get();
     return View::make('products/search')->with('productos', $productos);
 });
 
@@ -25,6 +26,9 @@ Route::resource('category', 'CategoriesController',
 
 Route::resource('product', 'ProductsController',
                 array('only' => array('show')));
+
+Route::resource('user', 'UserController',
+                array('only' => array('update')));
 
 Route::controller('user', 'UserController');
 Route::controller('account', 'RegistrationController');
@@ -47,3 +51,7 @@ Route::group(array('before' => array('auth|admin')), function()
     
     Route::any('admin/xml', 'XMLController@xml');
 });
+
+
+
+Route::any('google', 'googleLoginController@loginWithGoogle');

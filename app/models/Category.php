@@ -16,4 +16,21 @@ class Category extends Eloquent
     public function products() {
         return $this->hasMany('Product','category_id');
     }
+    
+    public static function boot()
+    {
+        parent::boot();    
+
+        static::deleted(function($category)
+        {
+            $subcategorias = $category->subcategories;
+            $productos = $category->products;
+            foreach($subcategorias as $subcategoria) {
+                Category::destroy($subcategoria->id);
+            }
+            foreach($productos as $producto) {
+                Product::destroy($producto->id);
+            }
+        });
+    }
 }

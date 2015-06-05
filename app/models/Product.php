@@ -8,4 +8,14 @@ class Product extends Eloquent
     public function category() {
         return $this->belongsTo('Category','category_id');
     }
+    
+    public static function boot()
+    {
+        parent::boot();    
+
+        static::deleted(function($product)
+        {
+            File::delete(public_path() . '/images/products/' . $product->image);
+        });
+    }
 }

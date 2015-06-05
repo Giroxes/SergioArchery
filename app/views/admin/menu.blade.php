@@ -67,10 +67,12 @@
                         'style' => 'margin-left: 10px'
                     ]) }}
                 {{ Form::close() }}
+                @if ($subcategorias->count())
                 {{ Form::open(['url' => 'admin/product/create', 'method' => 'GET']) }}
                     {{ Form::hidden('categoryId', $categoria->id) }}
                     {{ Form::submit('Añadir producto', ['class' => 'btn btn-success navbar-btn']) }}
                 {{ Form::close() }}
+                @endif
                 <button class="btn btn-warning btn-categoria">Mostrar/ocultar</button>
             </h2>
         </div>

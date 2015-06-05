@@ -44,7 +44,7 @@ extends Controller
             if (Auth::attempt($credentials))
             {
                 if (Auth::user()->confirmed) {
-                    return Redirect::to("info")->with('message', 'Ha iniciado sesión correctamente.');
+                    return Redirect::to("home");
                 } else {
                     Auth::logout();
                     return Redirect::to("info")->with('message', 'Para iniciar sesión primero deberá confirmar su correo electrónico.');
@@ -142,6 +142,17 @@ extends Controller
                 return Redirect::to('info')->with('message', 'Su contraseña ha sido restablecida con éxito.');
         }
     }
+
+    public function update($id) {
+        
+        $user = Auth::user();
+        $user->name = Input::get('name');
+        $user->lastName = Input::get('lastName');
+        $user->save();
+
+        return Redirect::to('user/profile');
+    }
+
 
     public function missingMethod($parameters = array())
     {

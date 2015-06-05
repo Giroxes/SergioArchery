@@ -7,6 +7,7 @@
         {{ HTML::style('css/main.css', array('media' => 'screen')) }}
         <script src="//code.jquery.com/jquery.js"></script>
         {{ HTML::script('assets/js/jquery.msgBox.js') }}
+        @yield("script")
         <title>Sergio's Archery</title>
         @yield("style")
     </head>
