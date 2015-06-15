@@ -6,7 +6,10 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "4.2.*",
-                "artdarek/oauth-4-laravel": "dev-master"
+                "artdarek/oauth-4-laravel": "dev-master",
+                "silex/silex": "1.0.*@dev",
+                "twig/twig": ">=1.8,<2.0-dev",
+                "google/apiclient": "1.0.*@beta"
 	},
 	"autoload": {
 		"classmap": [
@@ -34,5 +37,24 @@
 	"config": {
 		"preferred-install": "dist"
 	},
+        "repositories": [
+            {
+                "type": "package",
+                "package": {
+                    "name": "google/apiclient",
+                    "version": "1.0.0",
+                    "source": {
+                        "url": "https://github.com/google/google-api-php-client.git",
+                        "type": "git",
+                        "reference": "master"
+                    },
+                    "autoload": {
+                        "classmap": [
+                            "src/"
+                        ]
+                    }
+                }
+            }
+        ],
 	"minimum-stability": "stable"
 }

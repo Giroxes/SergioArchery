@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/V:/xampp/htdocs/proyectoPHP/vendor/google/apiclient/src/Google/Service/Plus.php</file>
             <file>file:/V:/xampp/htdocs/proyectoPHP/app/views/user/profile.blade.php</file>
-            <file>file:/V:/xampp/htdocs/proyectoPHP/app/controllers/ProductsController.php</file>
-            <file>file:/V:/xampp/htdocs/proyectoPHP/app/views/layout.blade.php</file>
-            <file>file:/V:/xampp/htdocs/proyectoPHP/app/models/Category.php</file>
-            <file>file:/V:/xampp/htdocs/proyectoPHP/app/views/admin/menu.blade.php</file>
+            <file>file:/V:/xampp/htdocs/proyectoPHP/vendor/composer/autoload_classmap.php</file>
             <file>file:/V:/xampp/htdocs/proyectoPHP/app/routes.php</file>
-            <file>file:/V:/xampp/htdocs/proyectoPHP/app/config/packages/artdarek/oauth-4-laravel/config.php</file>
         </group>
     </open-files>
 </project-private>

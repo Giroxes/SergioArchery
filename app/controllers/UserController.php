@@ -2,6 +2,7 @@
 
 use Illuminate\Support\MessageBag;
 
+
 class UserController
 extends Controller
 {
@@ -68,7 +69,16 @@ extends Controller
     {
         if (Auth::check())
         {
-            return View::make("user/profile");
+            
+//            $state = md5(rand());
+//            Session::put('state', $state);
+            return View::make("user/profile")
+//                    ->with(array(
+//                'CLIENT_ID' => CLIENT_ID,
+//                'STATE' => $state,
+//                'APPLICATION_NAME' => APPLICATION_NAME
+//            ))
+                ;
         } else 
         {
             return Redirect::to('home');

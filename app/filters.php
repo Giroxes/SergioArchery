@@ -50,7 +50,7 @@ Route::filter('auth.basic', function()
 Route::filter('admin', function($route, $request)
 {
     if ( ! Auth::user()->isAdmin()) {
-        return App::abort(401, 'You are not authorized.');
+        return Redirect::to('home');
     }
 });
 /*

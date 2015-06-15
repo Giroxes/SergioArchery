@@ -20,6 +20,7 @@
                 {{ HTML::image("images/products/" . $producto->image) }}
                 <div class="caption">
                     <h3 class="text-capitalize"><b>{{ ucfirst($producto->name) }}</b></h3>
+                    <h4 class="text-capitalize"><b>{{ ucfirst($producto->trademark) }}</b></h4>
                 @if(Auth::check())
                     <p><strike>{{ $producto->price / 100 }}€</strike> -{{ $producto->discount / 100 }}%</p>
                     <p><span class="price">{{ number_format((float)(($producto->price - ($producto->price * ($producto->discount / 10000))) / 100), 2, '.', '') }}</span>€</p>
